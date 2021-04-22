@@ -49,11 +49,10 @@ void	*th_philo(void *p)
 void	create_threads(t_param *p)
 {
 	pthread_t		pid;
-	int				rc;
 	size_t			t;
 	struct timeval	curt;
 
-	t = 0;
+	t = -1;
 	gettimeofday(&curt, NULL);
 	p->timestamp = curt.tv_sec * 1000 + curt.tv_usec / 1000;
 	sem_unlink("write");
@@ -62,14 +61,13 @@ void	create_threads(t_param *p)
 	p->fork = sem_open("fork", O_CREAT, 0, p->nb_of_philo);
 	p->eat_end = 0;
 	p->check_dead = 0;
-	while (t < p->nb_of_philo)
+	while (++t < p->nb_of_philo)
 	{
 		p = swap_philo(p, t);
 		gettimeofday(&curt, NULL);
 		p->philosophers->philo_stamp = curt.tv_sec * 1000 + curt.tv_usec / 1000;
-		rc = pthread_create(&pid, NULL, th_philo, p->philosophers);
+		pthread_create(&pid, NULL, th_philo, p->philosophers);
 		usleep(1000);
-		t++;
 	}
 	pthread_join(pid, NULL);
 	sem_close(p->fork);

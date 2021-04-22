@@ -1,5 +1,5 @@
-#ifndef PHILO_ONE_H
-# define PHILO_ONE_H
+#ifndef PHILO_TWO_H
+# define PHILO_TWO_H
 
 # include <stdbool.h>
 # include <stdlib.h>
@@ -32,7 +32,7 @@ typedef struct s_param
 	size_t			eat_end;
 	t_philo			*philosophers;
 	sem_t			*fork;
-	sem_t			*	write;
+	sem_t			*write;
 }			t_param;
 
 int		parsing(int ac, char **av, t_param *p);
