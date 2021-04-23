@@ -15,6 +15,8 @@
 # include <sys/types.h>
 # include <signal.h>
 
+# define STR_INT_MIN "-2147483648"
+
 typedef enum e_time_to
 {
 	Die,
@@ -35,6 +37,7 @@ typedef struct s_param
 	t_philo			*philosophers;
 	sem_t			*fork;
 	sem_t			*write;
+	size_t			nb_of_param;
 }			t_param;
 
 int		parsing(int ac, char **av, t_param *p);
@@ -42,10 +45,13 @@ int		parsing(int ac, char **av, t_param *p);
 void	create_threads(t_param *p);
 void	print_philo(t_philo *p, int action);
 
-void	ft_eat(t_philo *p);
+int		ft_eat(t_philo *p);
 void	ft_sleep(t_philo *p);
+void	create_sem(t_param *p);
 
 long	ft_atol(const char *str);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_itoa(int n);
 int		ft_isalldigit(char *c);
 int		checker(long to_check);
 t_param	*swap_philo(t_param *p, size_t i);

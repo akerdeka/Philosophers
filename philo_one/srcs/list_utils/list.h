@@ -19,14 +19,15 @@ typedef struct s_philo		t_philo;
 
 struct s_philo
 {
-	bool		is_alive;
-	size_t		id;
-	t_fork		*fork_used;
-	t_philo		*prev;
-	t_philo		*next;
-	t_param		*param;
-	size_t		eated;
-	long int	philo_stamp;
+	bool			is_alive;
+	size_t			id;
+	t_fork			*fork_used;
+	t_philo			*prev;
+	t_philo			*next;
+	t_param			*param;
+	size_t			eated;
+	long int		philo_stamp;
+	pthread_mutex_t	death;
 };
 
 t_philo	*new_philo(size_t i);

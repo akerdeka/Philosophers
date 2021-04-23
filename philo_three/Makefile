@@ -1,5 +1,5 @@
 SRC =	main.c srcs/parsing/parsing.c srcs/parsing/pars_utils.c srcs/list_utils/new_list.c srcs/philosophers.c\
-		srcs/print_philo.c srcs/actions.c srcs/ft_free.c
+		srcs/print_philo.c srcs/actions.c srcs/ft_free.c srcs/parsing/ft_itoa.c srcs/create_sem.c
 
 HEADERS = philo_three.h
 OBJ = $(SRC:.c=.o)

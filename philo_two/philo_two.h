@@ -6,12 +6,15 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <limits.h>
+# include <string.h>
 # include <pthread.h>
 # include <time.h>
 # include <sys/time.h>
 # include <sys/stat.h>
 # include <semaphore.h>
 # include "srcs/list_utils/list.h"
+
+# define STR_INT_MIN "-2147483648"
 
 typedef enum e_time_to
 {
@@ -44,6 +47,8 @@ void	ft_eat(t_philo *p);
 void	ft_sleep(t_philo *p);
 
 long	ft_atol(const char *str);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_itoa(int n);
 int		ft_isalldigit(char *c);
 int		checker(long to_check);
 t_param	*swap_philo(t_param *p, size_t i);

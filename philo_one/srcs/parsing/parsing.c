@@ -5,6 +5,7 @@ static void	create_philo(t_param *p, size_t i, t_philo *tmp, t_philo *first)
 	tmp = p->philosophers;
 	p->philosophers->next = new_philo(i);
 	p->philosophers = p->philosophers->next;
+	pthread_mutex_init(&p->philosophers->death, NULL);
 	p->philosophers->prev = tmp;
 	p->philosophers->next = first;
 	first->prev = p->philosophers;

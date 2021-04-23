@@ -19,6 +19,7 @@ struct s_philo
 	t_param		*param;
 	size_t		eated;
 	long int	philo_stamp;
+	sem_t		*death;
 };
 
 t_philo	*new_philo(size_t i);

@@ -20,6 +20,7 @@ struct s_philo
 	size_t		eated;
 	long int	philo_stamp;
 	pid_t		fork;
+	sem_t		*death;
 };
 
 t_philo	*new_philo(size_t i);

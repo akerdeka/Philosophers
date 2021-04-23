@@ -48,6 +48,7 @@ int	parsing(int ac, char **av, t_param *p)
 	p->time_to_[Die] = ft_atol(av[2]);
 	p->time_to_[Eat] = ft_atol(av[3]);
 	p->time_to_[Sleep] = ft_atol(av[4]);
+	p->nb_must_eat = -1;
 	if (ac == 6)
 	{
 		if (checker(ft_atol(av[5])) == -1 || ft_isalldigit(av[5]))
@@ -55,5 +56,7 @@ int	parsing(int ac, char **av, t_param *p)
 		p->nb_must_eat = ft_atol(av[5]);
 	}
 	set_id_philo(p);
+	p->eat_end = 0;
+	p->check_dead = 0;
 	return (0);
 }

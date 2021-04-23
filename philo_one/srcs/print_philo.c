@@ -5,9 +5,10 @@ void	print_philo(t_philo *p, int action)
 	struct timeval	current_time;
 	long int		actual;
 
-	if (p->param->eat_end == p->param->nb_of_philo || p->param->check_dead == 1)
-		return ;
 	pthread_mutex_lock(&p->param->write);
+	if ((p->param->eat_end == p->param->nb_of_philo || p->param->check_dead == 1) && \
+		!pthread_mutex_unlock(&p->param->write))
+		return ;
 	gettimeofday(&current_time, NULL);
 	actual = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;
 	if (action == Eat)

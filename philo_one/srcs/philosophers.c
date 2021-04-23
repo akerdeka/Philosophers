@@ -11,9 +11,11 @@ void	*th_brain(void *p)
 		gettimeofday(&cur_t, NULL);
 		if (t->is_alive == 0)
 			print_philo(t, Die);
+		pthread_mutex_lock(&t->death);
 		if ((unsigned long)(cur_t.tv_sec * 1000 + cur_t.tv_usec / 1000) - \
 			t->philo_stamp > (t->param->time_to_[Die]))
 			t->is_alive = 0;
+		pthread_mutex_unlock(&t->death);
 		if (t->param->eat_end == t->param->nb_of_philo)
 			break ;
 		usleep(3000);

@@ -9,6 +9,7 @@ void	ft_free(t_param *p)
 	{
 		free(p->philosophers->fork_used);
 		free(p->philosophers);
+		pthread_mutex_destroy(&p->philosophers->death);
 		p->philosophers = p->philosophers->next;
 		i++;
 	}

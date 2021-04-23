@@ -18,8 +18,10 @@ void	ft_eat(t_philo *p)
 	print_philo(p, Fork);
 	print_philo(p, Eat);
 	p->eated++;
+	pthread_mutex_lock(&p->death);
 	gettimeofday(&current_time, NULL);
 	p->philo_stamp = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;
+	pthread_mutex_unlock(&p->death);
 	if (p->eated == p->param->nb_must_eat)
 		p->param->eat_end++;
 	usleep(p->param->time_to_[Eat] * 1000);

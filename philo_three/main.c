@@ -8,6 +8,7 @@ int	main(int ac, char **av)
 		printf("Error, need 4 or 5 arguments\n");
 	else
 	{
+		p.nb_of_param = ac;
 		if (parsing(ac, av, &p) == 1)
 			return (0);
 		create_threads(&p);

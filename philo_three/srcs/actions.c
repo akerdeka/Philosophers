@@ -1,6 +1,13 @@
 #include "../philo_three.h"
 
-void	ft_eat(t_philo *p)
+static int	sem_set(t_param *akerdekouille)
+{
+	sem_post(akerdekouille->fork);
+	sem_post(akerdekouille->fork);
+	return (1);
+}
+
+int	ft_eat(t_philo *p)
 {
 	struct timeval	current_time;
 
@@ -10,7 +17,7 @@ void	ft_eat(t_philo *p)
 		print_philo(p, Fork);
 		usleep(p->param->time_to_[Die] * 1000);
 		sem_post(p->param->fork);
-		return ;
+		return (0);
 	}
 	sem_wait(p->param->fork);
 	sem_wait(p->param->fork);
@@ -20,11 +27,11 @@ void	ft_eat(t_philo *p)
 	p->eated++;
 	gettimeofday(&current_time, NULL);
 	p->philo_stamp = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;
-	if (p->eated == p->param->nb_must_eat)
-		p->param->eat_end++;
 	usleep(p->param->time_to_[Eat] * 1000);
-	sem_post(p->param->fork);
-	sem_post(p->param->fork);
+	if (p->eated == p->param->nb_must_eat)
+		return (sem_set(p->param));
+	sem_set(p->param);
+	return (0);
 }
 
 void	ft_sleep(t_philo *p)
