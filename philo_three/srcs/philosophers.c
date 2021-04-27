@@ -37,7 +37,7 @@ void	*th_philo(void *p)
 	while (t->param->check_dead == 0)
 	{
 		if (ft_eat(t) == 1)
-			exit(2);
+			break ;
 		ft_sleep(t);
 		print_philo(t, Think);
 	}

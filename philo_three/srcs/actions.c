@@ -17,7 +17,7 @@ int	ft_eat(t_philo *p)
 		print_philo(p, Fork);
 		usleep(p->param->time_to_[Die] * 1000);
 		sem_post(p->param->fork);
-		return (0);
+		return (1);
 	}
 	sem_wait(p->param->fork);
 	sem_wait(p->param->fork);
