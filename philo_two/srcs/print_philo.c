@@ -18,8 +18,8 @@ void	print_philo(t_philo *p, int action)
 	long int		actual;
 
 	sem_wait(p->param->write);
-	if ((p->param->eat_end == p->param->nb_of_philo || p->param->check_dead == 1) && \
-		!(sem_post(p->param->write)))
+	if ((p->param->eat_end == p->param->nb_of_philo || \
+		p->param->check_dead == 1) && !(sem_post(p->param->write)))
 		return ;
 	gettimeofday(&current_time, NULL);
 	actual = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;

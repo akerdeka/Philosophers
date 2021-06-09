@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_philo.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akerdeka <akerdeka@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/09 10:32:45 by akerdeka          #+#    #+#             */
+/*   Updated: 2021/06/09 10:32:46 by akerdeka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philo_one.h"
 
 void	print_philo(t_philo *p, int action)
@@ -6,8 +18,8 @@ void	print_philo(t_philo *p, int action)
 	long int		actual;
 
 	pthread_mutex_lock(&p->param->write);
-	if ((p->param->eat_end == p->param->nb_of_philo || p->param->check_dead == 1) && \
-		!pthread_mutex_unlock(&p->param->write))
+	if ((p->param->eat_end == p->param->nb_of_philo || \
+		p->param->check_dead == 1) && !pthread_mutex_unlock(&p->param->write))
 		return ;
 	gettimeofday(&current_time, NULL);
 	actual = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;
